@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarinApp | Plataforma de Marinheiros</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>MarinApp</h1>
+      <p class="subtitle">Plataforma de contratação de marinheiros</p>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="wrap nav-wrap">
+      <ul>
+        <li><a href="#cadastro">Cadastro</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section id="cadastro" class="container wrap">
+      <h2>Para proprietários</h2>
+      <p>Basta se cadastrar, descrever a vaga ou necessidade do serviço e, em poucos cliques, encontrar marinheiros disponíveis na sua região.</p>
+
+      <h3>Para marinheiros</h3>
+      <p>Os profissionais podem criar seus perfis, destacando suas experiências e qualificações para serem contratados.</p>
+      <div class="center-btn">
+        <a href="#form-mariner" class="btn-primary">Enviar Currículo</a>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="container wrap">
+      <h2>Como Funciona</h2>
+      <div class="cards">
+        <article class="card">
+          <h4>1 — Cadastre</h4>
+          <p>Crie sua conta e preencha informações básicas.</p>
+        </article>
+        <article class="card">
+          <h4>2 — Publique a vaga</h4>
+          <p>Descreva a necessidade: diária, CLT, período, local.</p>
+        </article>
+        <article class="card">
+          <h4>3 — Contrate</h4>
+          <p>Selecione candidatos com histórico e avaliações.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contato" class="container wrap">
+      <h2>Contato</h2>
+      <p>Entre em contato ou envie seu currículo diretamente através dos formulários abaixo.</p>
+
+      <div id="mensagem-sucesso" class="mensagem-sucesso"></div>
+
+      <div class="forms-grid">
+        <div class="form-box" id="form-mariner">
+          <h3>Envio de Currículo</h3>
+          <form id="form-curriculo">
+            <label for="nome-mariner">Nome</label>
+            <input type="text" id="nome-mariner" name="nome" required>
+
+            <label for="email-mariner">E-mail</label>
+            <input type="email" id="email-mariner" name="email" required>
+
+            <label for="arquivo-cv">Currículo (PDF)</label>
+            <input type="file" id="arquivo-cv" name="arquivo" accept=".pdf" required>
+
+            <button type="submit" class="btn-primary">Enviar Currículo</button>
+          </form>
+        </div>
+
+        <div class="form-box">
+          <h3>Contratar Marinheiro</h3>
+          <form id="form-contratante">
+            <label for="nome-contratante">Nome</label>
+            <input type="text" id="nome-contratante" name="nome" required>
+
+            <label for="email-contratante">E-mail</label>
+            <input type="email" id="email-contratante" name="email" required>
+
+            <label for="descricao-vaga">Descrição da Vaga</label>
+            <textarea id="descricao-vaga" name="descricao" rows="4" placeholder="Descreva a necessidade..." required></textarea>
+
+            <button type="submit" class="btn-primary">Enviar Solicitação</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="ano"></span> MarinApp — Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    function mostrarMensagem(texto) {
+      const msg = document.getElementById('mensagem-sucesso');
+      msg.textContent = texto;
+      msg.style.display = 'block';
+      setTimeout(() => { msg.style.display = 'none'; }, 3000);
+    }
+
+    document.getElementById('form-curriculo').addEventListener('submit', function(event) {
+      event.preventDefault();
+      mostrarMensagem('Currículo enviado com sucesso!');
+      this.reset();
+    });
+
+    document.getElementById('form-contratante').addEventListener('submit', function(event) {
+      event.preventDefault();
+      mostrarMensagem('Solicitação enviada com sucesso!');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
