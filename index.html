@@ -1,128 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ancorar | Plataforma de Marinheiros</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ancorar - Plataforma de Contratações</title>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap">
-      <h1>Ancorar</h1>
-      <p class="subtitle">Plataforma de contratação de marinheiros</p>
+
+<header class="site-header">
+  <div class="ocean-bg">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+    <div class="wave wave4"></div>
+  </div>
+  <div class="header-content">
+    <h1><span class="anchor-icon">⚓</span> Ancorar</h1>
+    <p class="subtitle">Plataforma de contratação de marinheiros</p>
+    <div class="header-buttons">
+      <button onclick="document.getElementById('cadastro-login').scrollIntoView({behavior:'smooth'})">Cadastro</button>
+      <button onclick="document.getElementById('cadastro-login').scrollIntoView({behavior:'smooth'})">Login</button>
     </div>
-  </header>
+    <span id="bem-vindo" style="display:none;"></span>
+    <button id="btn-logout" style="display:none;">Sair</button>
+  </div>
+</header>
 
-  <nav class="main-nav">
-    <div class="wrap nav-wrap">
-      <ul>
-        <li><a href="#cadastro">Cadastro</a></li>
-        <li><a href="#como-funciona">Como Funciona</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </div>
-  </nav>
+<section id="cadastro-login">
+  <h2>Cadastro</h2>
+  <form id="form-cadastro">
+    <input type="text" id="cad-nome" placeholder="Nome" required />
+    <input type="email" id="cad-email" placeholder="E-mail" required />
+    <input type="password" id="cad-senha" placeholder="Senha" required />
+    <select id="cad-tipo" required>
+      <option value="marinheiro">Marinheiro</option>
+      <option value="contratante">Contratante</option>
+    </select>
+    <button type="submit">Cadastrar</button>
+  </form>
 
-  <main>
-    <section id="cadastro" class="container wrap">
-      <h2>Para proprietários</h2>
-      <p>Basta se cadastrar, descrever a vaga ou necessidade do serviço e, em poucos cliques, encontrar marinheiros disponíveis na sua região.</p>
+  <h2>Login</h2>
+  <form id="form-login">
+    <input type="email" id="login-email" placeholder="E-mail" required />
+    <input type="password" id="login-senha" placeholder="Senha" required />
+    <button type="submit">Entrar</button>
+  </form>
+</section>
 
-      <h3>Para marinheiros</h3>
-      <p>Os profissionais podem criar seus perfis, destacando suas experiências e qualificações para serem contratados.</p>
-      <div class="center-btn">
-        <a href="#form-mariner" class="btn-primary">Enviar Currículo</a>
-      </div>
-    </section>
+<section id="dashboard-section" style="display:none;">
+  <h2 id="dashboard-title">Dashboard</h2>
 
-    <section id="como-funciona" class="container wrap">
-      <h2>Como Funciona</h2>
-      <div class="cards">
-        <article class="card">
-          <h4>1 — Cadastre</h4>
-          <p>Crie sua conta e preencha informações básicas.</p>
-        </article>
-        <article class="card">
-          <h4>2 — Publique a vaga</h4>
-          <p>Descreva a necessidade: diária, CLT, período, local.</p>
-        </article>
-        <article class="card">
-          <h4>3 — Contrate</h4>
-          <p>Selecione candidatos com histórico e avaliações.</p>
-        </article>
-      </div>
-    </section>
+  <div id="envio-curriculo">
+    <h3>Enviar Currículo</h3>
+    <form id="form-curriculo">
+      <input type="text" id="cv-nome" placeholder="Nome" required />
+      <input type="email" id="cv-email" placeholder="E-mail" required />
+      <input type="file" id="cv-arquivo" accept=".pdf" required />
+      <button type="submit">Enviar</button>
+    </form>
+    <p id="mensagem-sucesso" style="display:none;color:green;"></p>
+  </div>
 
-    <section id="contato" class="container wrap">
-      <h2>Contato</h2>
-      <p>Entre em contato ou envie seu currículo diretamente através dos formulários abaixo.</p>
+  <h3>Currículos</h3>
+  <table id="tabela-dashboard">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Arquivo</th>
+        <th>Visualizações</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</section>
 
-      <div id="mensagem-sucesso" class="mensagem-sucesso"></div>
 
-      <div class="forms-grid">
-        <div class="form-box" id="form-mariner">
-          <h3>Envio de Currículo</h3>
-          <form id="form-curriculo">
-            <label for="nome-mariner">Nome</label>
-            <input type="text" id="nome-mariner" name="nome" required>
+<section id="imagens-estaticas">
+  <div class="imagem-bloco">
+    <h2>Apresentação</h2>
+    <img src="imagens/apresentacao.jpg" alt="Apresentação" />
+  </div>
+  <div class="imagem-bloco">
+    <h2>Descrição da Empresa</h2>
+    <img src="imagens/descricao.jpg" alt="Descrição" />
+  </div>
+  <div class="imagem-bloco">
+    <h2>Como Funciona</h2>
+    <img src="imagens/comofunciona.jpg" alt="Como Funciona" />
+  </div>
+  <div class="imagem-bloco">
+    <h2>Divulgação e Parcerias</h2>
+    <img src="imagens/divulgacao.jpg" alt="Divulgação" />
+  </div>
+  <div class="imagem-bloco">
+    <h2>Projeção do Futuro</h2>
+    <img src="imagens/projecaoparaof.jpg" alt="Projeção" />
+  </div>
+  <div class="imagem-bloco">
+    <h2>Sustentabilidade</h2>
+    <img src="imagens/sustentabilidade.jpg" alt="Sustentabilidade" />
+  </div>
+  <div class="imagem-bloco">
+    <h2>Contato</h2>
+    <img src="imagens/contato.jpg" alt="Contato" />
+  </div>
+</section>
 
-            <label for="email-mariner">E-mail</label>
-            <input type="email" id="email-mariner" name="email" required>
+<footer>
+  © 2025 Ancorar — Todos os direitos reservados.
+</footer>
 
-            <label for="arquivo-cv">Currículo (PDF)</label>
-            <input type="file" id="arquivo-cv" name="arquivo" accept=".pdf" required>
-
-            <button type="submit" class="btn-primary">Enviar Currículo</button>
-          </form>
-        </div>
-
-        <div class="form-box">
-          <h3>Contratar Marinheiro</h3>
-          <form id="form-contratante">
-            <label for="nome-contratante">Nome</label>
-            <input type="text" id="nome-contratante" name="nome" required>
-
-            <label for="email-contratante">E-mail</label>
-            <input type="email" id="email-contratante" name="email" required>
-
-            <label for="descricao-vaga">Descrição da Vaga</label>
-            <textarea id="descricao-vaga" name="descricao" rows="4" placeholder="Descreva a necessidade..." required></textarea>
-
-            <button type="submit" class="btn-primary">Enviar Solicitação</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>© <span id="ano"></span> Ancorar — Todos os direitos reservados.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('ano').textContent = new Date().getFullYear();
-
-    function mostrarMensagem(texto) {
-      const msg = document.getElementById('mensagem-sucesso');
-      msg.textContent = texto;
-      msg.style.display = 'block';
-      setTimeout(() => { msg.style.display = 'none'; }, 3000);
-    }
-
-    document.getElementById('form-curriculo').addEventListener('submit', function(event) {
-      event.preventDefault();
-      mostrarMensagem('Currículo enviado com sucesso!');
-      this.reset();
-    });
-
-    document.getElementById('form-contratante').addEventListener('submit', function(event) {
-      event.preventDefault();
-      mostrarMensagem('Solicitação enviada com sucesso!');
-      this.reset();
-    });
-  </script>
+<script type="module" src="js/auth.js"></script>
 </body>
 </html>
